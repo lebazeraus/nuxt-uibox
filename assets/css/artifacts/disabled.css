@@ -1,0 +1,8 @@
+.button:disabled, .tab, .icon, .input {
+  cursor: not-allowed !important;
+  opacity: .64;
+}
+
+.tab * {
+  pointer-events: none;
+}

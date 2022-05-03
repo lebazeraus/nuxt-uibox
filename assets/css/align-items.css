@@ -1,0 +1,6 @@
+.center { align-items: center; }
+.end { align-items: end; }
+.flex-end { align-items: flex-end; }
+.flex-start { align-items: flex-start; }
+.normal { align-items: normal; }
+.start { align-items: start; }

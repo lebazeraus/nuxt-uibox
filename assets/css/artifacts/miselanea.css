@@ -1,0 +1,61 @@
+.center_with_margins {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.user_select_none {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.line_clamp {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+}
+
+.line_clamp_1 {
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+}
+
+.line_clamp_2 {
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.line_clamp_3 {
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+
+.filter_brightness_96 {
+  filter: brightness(.96);
+}
+
+.grid {
+  display: grid;
+  grid-auto-rows: auto;
+  position: relative;
+}
+
+.flex {
+  align-content: flex-start;
+  align-items: center;
+  display: flex;
+  flex-flow: wrap;
+}
+
+.content {
+  margin: 0 auto;
+  position: relative;
+}
+
+.cursor_pointer {
+  cursor: pointer;
+}
