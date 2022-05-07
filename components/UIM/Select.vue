@@ -6,8 +6,9 @@ import { CSSArtifactDisabled, CSSBorderRadius, CSSColor } from "~/composables/us
 
 const props = defineProps({
   allowToClean: { type: Boolean },
+  showIconAdd: { type: Boolean },
   label: { type: Object },
-  input: { type: Object },
+  input: { type: Object, default: () => ({}) },
   items: { type: Array },
   model: { type: Object },
 })
@@ -25,7 +26,7 @@ watch(focused, focused => {
 })
 
 function select($) {
-  props.model.value = $
+  props.model.value = {...$}
   isFocus.value = false
   emit('change', $)
 }
@@ -40,7 +41,7 @@ const getCSSMSelect = computed(() => {
 
 <template>
   <div :class="[$style.css_select, getCSSMSelect]" ref="target">
-    <UIALabel v-bind="props.label" margin-bottom="4"/>
+    <UIALabel v-if="props.label" v-bind="props.label" margin-bottom="4"/>
     <div :class="$style.css_field">
       <div @click.stop tabindex="0" :class="[CSSBorderRadius._4, CSSColor.bs_focus_graylight]" :style="{cursor: props.input.disabled ? 'not-allowed' : 'pointer'}">
         <UIAInput v-bind="props.input" v-model="props.model.value.text" readonly/>
@@ -48,7 +49,8 @@ const getCSSMSelect = computed(() => {
       <UIAIcon
         v-if="props.allowToClean && props.model.value.text"
         @click="select({})"
-        bg="white"
+        :bg="props.input.bg || 'white'"
+        :color="props.input.color || 'black'"
         bg-hover="graylight"
         br-radius="4"
         :class="$style.css_iconTimes"
@@ -56,7 +58,13 @@ const getCSSMSelect = computed(() => {
         padding="4"
         size="24"
       />
-      <UIAIcon v-else bg="white" :class="$style.css_iconAngleDown" name="angle-down"/>
+      <UIAIcon
+        v-else
+        :bg="props.input.bg || 'white'"
+        :color="props.input.color || 'black'"
+        :class="$style.css_iconAngleDown"
+        :name="props.showIconAdd ? 'plus' : 'angle-down'"
+      />
     </div>
     <UIOUl @select="select($event)" floating :is-hiden="!isFocus" :items="props.items"/>
   </div>

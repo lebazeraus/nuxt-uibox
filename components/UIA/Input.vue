@@ -1,7 +1,7 @@
 <script setup>
 // A 
 import { computed } from "@vue/composition-api"
-import { CSSArtifactDisabled, CSSColor, CSSMargin } from "~/composables/useCSS"
+import { CSSArtifactDisabled, CSSColor, CSSMargin, CSSPadding } from "~/composables/useCSS"
 
 const props = defineProps({
   bg: { type: String, default: 'white' },
@@ -12,7 +12,11 @@ const props = defineProps({
   color: { type: String, default: 'black' },
   disabled: { type: Boolean },
   marginTop: { type: [String, Number] },
-  mask: { type: [String, Object] },
+  mask: { type: [String, Object, Array] },
+  paddingBottom: { type: [String, Number], default: 0 },
+  paddingLeft: { type: [String, Number], default: 16 },
+  paddingRight: { type: [String, Number], default: 16 },
+  paddingTop: { type: [String, Number], default: 0 },
   placeholder: { type: String },
   readonly: { type: Boolean },
   type: { type: String, default: 'text' },
@@ -29,7 +33,11 @@ const getCSSAInput = computed(() => {
     CSSColor[`bs_hover_${props.bsHover}`],
     CSSColor[`bs_focus_${props.bsFocus}`],
     CSSColor[`text_${props.color}`],
-    CSSMargin[`top_${props.marginTop}`]
+    CSSMargin[`top_${props.marginTop}`],
+    CSSPadding[`bottom_${props.paddingBottom}`],
+    CSSPadding[`left_${props.paddingLeft}`],
+    CSSPadding[`right_${props.paddingRight}`],
+    CSSPadding[`top_${props.paddingTop}`]
   ].filter($ => $)
 })
 </script>
@@ -66,7 +74,6 @@ export default {
   font-size: 14px;
   height: 40px;
   outline: none;
-  padding: 0 16px;
   transition: border .3s, box-shadow .3s ease-in;
   width: 100%;
 } .css_a_input[type="password"] {

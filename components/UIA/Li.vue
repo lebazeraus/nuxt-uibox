@@ -1,26 +1,28 @@
 <script setup>
 import { computed } from "@nuxtjs/composition-api"
-import { CSSColor } from "~/composables/useCSS"
+import { CSSArtifactDisabled, CSSColor } from "~/composables/useCSS"
 
 const props = defineProps({
   bg: { type: String },
-  bgHover: { type: String },
+  bgHover: { type: String, default: 'graylight' },
   color: { type: String, default: 'black' },
+  disabled: { type: Boolean },
   text: { type: [String, Number] },
   to: { type: String }
 })
 
 const getCSSALi = computed(() => {
   return [
-    CSSColor[`bg-${props.bg}`],
-    CSSColor[`bg-hover-${props.bgHover}`],
-    CSSColor[`text-${props.color}`]
+    CSSArtifactDisabled[props.disabled ? 'li' : null],
+    CSSColor[`bg_${props.bg}`],
+    CSSColor[`bg_hover_${props.bgHover}`],
+    CSSColor[`text_${props.color}`]
   ].filter($ => $)
 })
 </script>
 
 <template>
-  <component @click="$emit('click')" :class="[$style.css_a_li, getCSSALi]" :is="props.to ? 'nuxt-link' : 'li'">{{ props.text }}<slot/></component>
+  <component @click="props.disabled ? () => {} : $emit('click')" :class="[$style.css_a_li, getCSSALi]" :is="props.to ? 'nuxt-link' : 'li'">{{ props.text }}<slot/></component>
 </template>
 
 <style module>

@@ -1,5 +1,5 @@
 import Vue from "vue"
-import linkifyHtml from 'linkify-html';
+import linkifyHtml from 'linkify-html'
 
 Vue.directive('linkify', {
   bind: function(el) {

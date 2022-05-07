@@ -1,4 +1,4 @@
-.button:disabled, .tab, .icon, .input {
+.button:disabled, .tab, .icon, .input, .li {
   cursor: not-allowed !important;
   opacity: .64;
 }

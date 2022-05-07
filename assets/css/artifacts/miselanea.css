@@ -59,3 +59,7 @@
 .cursor_pointer {
   cursor: pointer;
 }
+
+.cursor_move {
+  cursor: move;
+}

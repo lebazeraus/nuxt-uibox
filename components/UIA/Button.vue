@@ -28,12 +28,9 @@ const getCSSAButton = computed(() => {
     CSSColor[`bs_hover_${props.bsHover}`],
     CSSColor[`bs_focus_${props.bsFocus}`],
     CSSColor[`text_${props.color}`],
-    // normal | isLarge
-    CSSTextSize[`_${props.isLarge ? 16 : 14}`],
-    CSSHeight[`_${props.isLarge ? 48 : 40}`],
-    // normal | isSmall
-    CSSTextSize[`_${props.isSmall ? 12 : 14}`],
-    CSSHeight[`_${props.isSmall ? 32 : 40}`],
+    // isSmall | isLarge | normal
+    CSSTextSize[`_${props.isSmall ? 12 : props.isLarge ? 16 : 14}`],
+    CSSHeight[`_${props.isSmall ? 32 : props.isLarge ? 48 : 40}`],
     CSSMargin[`top_${props.marginTop}`],
     CSSWidth[`_${props.widthPercent}_percent`]
   ].filter($ => $)
@@ -58,6 +55,7 @@ const getCSSAButton = computed(() => {
   outline: none;
   letter-spacing: .3px;
   padding: 0 16px;
+  position: relative;
   transition: box-shadow .3s ease-in, opacity .3s;
 }
 </style>

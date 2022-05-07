@@ -28,9 +28,8 @@ const getCSSOUl = computed(() => {
     <input v-model="filter" :class="$style.css_inputFilter" placeholder="Filter"/>
   </div>
   <div v-for="($, i) in props.items" :key="i">
-    <UIALi @click="$emit('select', $); filter = ''" v-show="!filter || $.text.toLowerCase().indexOf(filter.toLowerCase()) >= 0" bg-hover="graylight">
-      {{ $.text }}
-      <br><small>{{ $.label }}</small>
+    <UIALi @click="$emit('select', $); filter = ''" v-show="!filter || $.text.toLowerCase().indexOf(filter.toLowerCase()) >= 0" v-bind="$">
+      <br><small v-if="$.label">{{ $.label }}</small>
     </UIALi>
   </div>
 </ul>
