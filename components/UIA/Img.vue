@@ -8,7 +8,7 @@ const props = defineProps({
   brRadius: { type: [String, Number] },
   fit: { type: String },
   filterBrightness96: { type: Boolean, default: true },
-  height: { type: [String, Number] },
+  height: { type: [String, Number, Boolean] },
   margin: { type: [String, Number] },
   marginBottom: { type: [String, Number] },
   marginTop: { type: [String, Number] },
@@ -59,7 +59,7 @@ const getCSSAImg = computed(() => {
     @error="isError = true"
     :class="[getCSSAImg]"
     :fit="props.fit"
-    :height="props.height"
+    :height="props.height || null"
     :sizes="props.sizes"
     :src="isError ? 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMGg0OHY0OEgwVjB6IiBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=' : props.src"
     :style="{ display: props.align ? 'block' : 'inline-block'}"

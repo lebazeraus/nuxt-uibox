@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from "@vue/composition-api"
-import { CSSColor, CSSTextAlign, CSSFontWeight, CSSMargin, CSSTextSize } from "~/composables/useCSS"
+import { CSSArtifactMiselanea, CSSColor, CSSTextAlign, CSSFontWeight, CSSMargin, CSSTextSize } from "~/composables/useCSS"
 
 const props = defineProps({
   align: { type: String },
@@ -8,6 +8,8 @@ const props = defineProps({
   color: { type: String, default: 'black' },
   colorHover: { type: String },
   fontWeight: { type: String, default: '600' },
+  isCapital: { type: Boolean },
+  lineClamp: { type: [String, Number] },
   margin: { type: [String, Number] },
   marginBottom: { type: [String, Number] },
   marginLeft: { type: [String, Number] },
@@ -19,6 +21,9 @@ const props = defineProps({
 
 const getCSSALabel = computed(() => {
   return [
+    CSSArtifactMiselanea[props.lineClamp ? 'line_clamp' : null],
+    CSSArtifactMiselanea[`line_clamp_${props.lineClamp}`],
+    CSSArtifactMiselanea[props.isCapital ? 'text_capitalize' : null],
     CSSColor[`bg_${props.bg}`],
     CSSColor[`text_${props.color}`],
     CSSColor[`text_hover_${props.colorHover}`],

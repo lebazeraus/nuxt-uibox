@@ -22,7 +22,7 @@ const getCSSALi = computed(() => {
 </script>
 
 <template>
-  <component @click="props.disabled ? () => {} : $emit('click')" :class="[$style.css_a_li, getCSSALi]" :is="props.to ? 'nuxt-link' : 'li'">{{ props.text }}<slot/></component>
+  <component @click="props.disabled ? () => {} : $emit('click')" :class="[$style.css_a_li, getCSSALi]" :is="props.disabled ? 'li' : props.to ? 'nuxt-link' : 'li'" :to="props.to">{{ props.text }}<slot/></component>
 </template>
 
 <style module>

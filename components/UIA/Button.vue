@@ -5,13 +5,17 @@ import { CSSArtifactDisabled, CSSArtifactMiselanea, CSSColor, CSSHeight, CSSMarg
 
 const props = defineProps({
   bg: { type: String, default: 'primary' },
+  bgHover: { type: String },
+  bgFocus: { type: String },
   brColor: { type: String, default: 'primary' },
   brHover: { type: String, default: 'primary' },
   bsHover: { type: String, default: 'primary' },
   bsFocus: { type: String, default: 'primary' },
+  category: { type: String },
   color: { type: String, default: 'white' },
   disabled: { type: Boolean },
   isLarge: { type: Boolean },
+  isLoading: { type: Boolean },
   isSmall: { type: Boolean },
   marginTop: { type: [String, Number] },
   text: { type: [String, Number] },
@@ -19,14 +23,28 @@ const props = defineProps({
 })
 
 const getCSSAButton = computed(() => {
+  let style = []
+  if (props.category) {
+    switch (props.category) {
+      case 'black':
+        style = [CSSColor.bg_black, CSSColor.br_black, CSSColor.br_hover_black, CSSColor.bs_hover_black, CSSColor.bs_focus_black]
+        break
+    }
+  } else {
+    style = [
+      CSSColor[`bg_${props.bg}`],
+      CSSColor[`bg_hover_${props.bgHover}`],
+      CSSColor[`bg_focus_${props.bgFocus}`],
+      CSSColor[`br_${props.brColor}`],
+      CSSColor[`br_hover_${props.brHover}`],
+      CSSColor[`bs_hover_${props.bsHover}`],
+      CSSColor[`bs_focus_${props.bsFocus}`]
+    ]
+  }
   return [
-    CSSArtifactDisabled[props.disabled ? 'button' : null],
+    ...style,
+    CSSArtifactDisabled[(props.disabled || props.isLoading) ? 'button' : null],
     CSSArtifactMiselanea.user_select_none,
-    CSSColor[`bg_${props.bg}`],
-    CSSColor[`br_${props.brColor}`],
-    CSSColor[`br_hover_${props.brHover}`],
-    CSSColor[`bs_hover_${props.bsHover}`],
-    CSSColor[`bs_focus_${props.bsFocus}`],
     CSSColor[`text_${props.color}`],
     // isSmall | isLarge | normal
     CSSTextSize[`_${props.isSmall ? 12 : props.isLarge ? 16 : 14}`],
@@ -41,8 +59,8 @@ const getCSSAButton = computed(() => {
   <button
     @click="props.disabled ? () => {} : $emit('click')"
     :class="[$style.css_a_button, getCSSAButton]"
-    :disabled="props.disabled"
-  >{{ props.text }}<slot/></button>
+    :disabled="props.isLoading || props.disabled"
+  >{{ props.isLoading ? 'Espere...' : props.text }}<slot/></button>
 </template>
 
 <style module>

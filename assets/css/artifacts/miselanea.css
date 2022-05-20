@@ -13,7 +13,7 @@
 }
 
 .line_clamp {
-  display: -webkit-box;
+  display: -webkit-box !important;
   overflow: hidden;
   -webkit-box-orient: vertical;
   box-orient: vertical;

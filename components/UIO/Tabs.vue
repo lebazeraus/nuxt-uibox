@@ -51,7 +51,7 @@ onMounted(() => {
       :class="$style.css_tab"
       :color="props.color"
       :color-active="props.colorActive"
-      :icon="$.icon ? { color: props.color, colorActive: props.bgHoverActive, name: $.icon.name, size: 18 } : null"
+      :icon="$.icon ? { color: props.color, colorActive: props.colorActive, name: $.icon.name, size: 18 } : null"
       :key="i"
       :to="$.to"
       >{{ $[props.propForText] }}</UIMTab>

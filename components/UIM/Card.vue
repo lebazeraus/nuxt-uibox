@@ -2,14 +2,22 @@
 import { CSSAlignItems, CSSArtifactMiselanea, CSSGap, CSSGridTemplateColumns } from "~/composables/useCSS"
 
 const props = defineProps({
-  coverHeight: { type: [String, Number], default: 144 },
+  coverHeight: { type: [String, Number, Boolean], default: 144 },
   avatarUrl: { type: String },
-  coverUrl: { type: String },
+  coverUrl: { type: [String, Array] },
   desc: { type: String },
   info: { type: Object },
   title: { type: String },
   to: { type: String }
 })
+
+function oneCoverUrl() {
+  if (Array.isArray(props.coverUrl)) {
+    return props.coverUrl?.[0]?.url || '/'
+  } else {
+    return props.coverUrl
+  }
+} 
 </script>
 
 <template>
@@ -20,7 +28,7 @@ const props = defineProps({
       :height="props.coverHeight"
       object-fit="cover"
       margin-bottom="16"
-      :src="props.coverUrl"
+      :src="oneCoverUrl()"
       width-percent="100">
       <div :class="$style.css_info">
         <UIAP color="white" font-weight="600" line-clamp="1" size="14">{{ props.info.title }}</UIAP>

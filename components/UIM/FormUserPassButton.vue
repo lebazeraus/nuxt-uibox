@@ -7,7 +7,7 @@ const Store = useStore()
 
 const { Status } = Store.state
 
-Store.commit('Status/Login', Status.IDLE)
+Store.commit('Status/login', Status.IDLE)
 
 const props = defineProps({
   user: { type: Object },
