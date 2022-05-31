@@ -16,7 +16,7 @@ const props = defineProps({
 })
 
 const fields = reactive({
-  user: { value: '3152740201' },
+  user: { value: '' },
   pass: { value: '' }
 })
 
@@ -34,7 +34,7 @@ const disabledButton = computed(() => {
   <UISGrid gap="24">
     <UIMField v-bind="props.user" :model="fields.user"/>
     <UIMField v-bind="props.pass" :model="fields.pass"/>
-    <UIAMLoading v-if="Status.Login === 'SENDING'"/>
+    <UIAMLoading v-if="Status.login === 'SENDING'"/>
     <UIAButton
       v-else
       @click="$emit('signIn', fields)"
