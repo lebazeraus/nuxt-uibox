@@ -14,6 +14,7 @@ const props = defineProps({
   category: { type: String },
   color: { type: String, default: 'white' },
   disabled: { type: Boolean },
+  isCenter: { type: Boolean },
   isLarge: { type: Boolean },
   isLoading: { type: Boolean },
   isSmall: { type: Boolean },
@@ -28,6 +29,9 @@ const getCSSAButton = computed(() => {
     switch (props.category) {
       case 'black':
         style = [CSSColor.bg_black, CSSColor.br_black, CSSColor.br_hover_black, CSSColor.bs_hover_black, CSSColor.bs_focus_black]
+        break
+      case 'gray':
+        style = [CSSColor.bg_graylight, CSSColor.br_graylight, CSSColor.bs_hover_black, CSSColor.bs_focus_black]
         break
     }
   } else {
@@ -44,6 +48,7 @@ const getCSSAButton = computed(() => {
   return [
     ...style,
     CSSArtifactDisabled[(props.disabled || props.isLoading) ? 'button' : null],
+    CSSArtifactMiselanea[props.isCenter ? 'center_with_margins' : null],
     CSSArtifactMiselanea.user_select_none,
     CSSColor[`text_${props.color}`],
     // isSmall | isLarge | normal

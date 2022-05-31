@@ -20,9 +20,10 @@ const props = defineProps({
   placeholder: { type: String },
   readonly: { type: Boolean },
   type: { type: String, default: 'text' },
-  valid: { type: Boolean },
+  validate: { type: [Function, String], default: () => {} },
   value: { type: [String, Number] }
 })
+const emit = defineEmits()
 
 const getCSSAInput = computed(() => {
   return [
@@ -40,6 +41,28 @@ const getCSSAInput = computed(() => {
     CSSPadding[`top_${props.paddingTop}`]
   ].filter($ => $)
 })
+const masks = {
+  email: { mask: 'C*@a*.a*', tokens: { 'C': { pattern: /[0-9.a-zA-Z]/, lowercase: true }}},
+  mobile: '### #######',
+  names: 'Aa* Aa*'
+}
+
+const validates = {
+  email(value) {
+    return value.length >= 5 &&
+      value.indexOf('@') >= 0 &&
+      value.indexOf('.') >= 3
+  }
+}
+
+function input(value) {
+  emit('input', value)
+  if (typeof props.validate === 'string') {
+    emit('isValid', validates[props.validate](value))
+  } else {
+    props.validate(value)
+  }
+}
 </script>
 
 <script>
@@ -53,8 +76,8 @@ export default {
 <template>
   <div>
     <input
-      @input="$emit('input', $event.target.value)"
-      v-maska="props.mask"
+      @input="input($event.target.value)"
+      v-maska="masks[props.mask] || props.mask"
       :class="[$style.css_a_input, getCSSAInput]"
       :disabled="props.disabled"
       :placeholder="props.placeholder"

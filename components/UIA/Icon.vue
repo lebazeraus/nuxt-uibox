@@ -35,7 +35,7 @@ const getCSSABaseIcon = computed(() => {
 const getCSSAIcon = computed(() => {
   return [
     CSSArtifactDisabled[props.disabled ? 'icon' : null],
-    CSSArtifactMiselanea[`${props.align}-with-margins`],
+    CSSArtifactMiselanea[`${props.align}_with_margins`],
     CSSColor[`text_${props.color}`],
     CSSColor[`text_hover_${props.colorHover}`],
     CSSMargin[`_${props.margin}`],

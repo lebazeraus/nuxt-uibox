@@ -11,6 +11,8 @@ const props = defineProps({
   items: { type: Array }
 })
 
+const emit = defineEmits()
+
 const filter = ref('')
 
 const getCSSOUl = computed(() => {
@@ -20,6 +22,11 @@ const getCSSOUl = computed(() => {
     CSSColor[`br_${props.brColor}`]
   ].filter($ => $)
 })
+
+function select($) {
+  emit('select', $)
+  filter.value = ''
+}
 </script>
 
 <template>
@@ -28,7 +35,7 @@ const getCSSOUl = computed(() => {
     <input v-model="filter" :class="$style.css_inputFilter" placeholder="Filter"/>
   </div>
   <div v-for="($, i) in props.items" :key="i">
-    <UIALi @click="$emit('select', $); filter = ''" v-show="!filter || $.text.toLowerCase().indexOf(filter.toLowerCase()) >= 0" v-bind="$">
+    <UIALi @click="select($)" v-show="!filter || $.text.toLowerCase().indexOf(filter.toLowerCase()) >= 0" v-bind="$">
       <br><small v-if="$.label">{{ $.label }}</small>
     </UIALi>
   </div>

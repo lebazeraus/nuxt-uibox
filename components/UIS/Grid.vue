@@ -25,7 +25,7 @@ const getCSSSGrid = computed(() => {
     CSSColor[`bg_${props.bg}`],
     CSSColor[`bg_hover_${props.bgHover}`],
     CSSGridTemplateColumns[`auto_fill_${props.autoFill}`],
-    CSSGridTemplateColumns[`_${props.columns}`],
+    CSSGridTemplateColumns[`${props.columns}`],
     CSSGap[`_${props.gap}`],
     CSSMargin[`bottom_${props.marginBottom}`],
     CSSPadding[`_${props.padding}`],

@@ -1,5 +1,7 @@
 <script setup>
 // M
+import { CSSAlignItems, CSSArtifactMiselanea, CSSGap, CSSGridTemplateColumns } from "~/composables/useCSS"
+
 const props = defineProps({
   icon: { type: Object },
   label: { type: Object },
@@ -10,10 +12,13 @@ const props = defineProps({
 
 <template>
   <div>
-    <UIALabel v-bind="props.label" margin-bottom="4"/>
+    <div :class="[CSSAlignItems.center, CSSArtifactMiselanea.grid, CSSGap._8, CSSGridTemplateColumns._1fr_max]">
+      <UIALabel v-bind="props.label" margin-bottom="4"/>
+      <UIAIcon v-if="props.model.isValid" color="green" name="check-circle" size="12"/>
+    </div>
     <div style="position: relative">
       <UIAIcon v-if="props.icon" v-bind="props.icon" style="bottom: 12px; left: 12px; position: absolute;" size="18"/>
-      <UIAInput v-bind="props.input" v-model="props.model.value" :padding-left="props.icon ? 40 : 16"/>
+      <UIAInput @isValid="props.model.isValid = $event" v-bind="props.input" v-model="props.model.value" :padding-left="props.icon ? 40 : 16"/>
     </div>
   </div>
 </template>

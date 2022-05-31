@@ -7,7 +7,7 @@ const isOpen = ref(false)
 <template>
 <div :class="$style.css_root">
   <pre v-if="isOpen" :class="$style.css_pre">
-    <UIALabel color="gray">@Pídeme</UIALabel><slot/>
+    <UIALabel color="gray">Pre</UIALabel><slot/>
   </pre>
   <div :class="$style.css_icon_button">
     <UIAIcon v-if="isOpen" @click="isOpen = false" bg="green" br-radius="50" color="white" name="times" padding="8" size="40"/>

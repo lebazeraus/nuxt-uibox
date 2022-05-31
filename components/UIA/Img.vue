@@ -4,7 +4,7 @@ import { CSSArtifactMiselanea, CSSBorderRadius, CSSColor, CSSMargin, CSSMaxHeigh
 
 const props = defineProps({
   align: { type: String },
-  bg: { type: String, default: 'accent' },
+  bg: { type: String },
   brRadius: { type: [String, Number] },
   fit: { type: String },
   filterBrightness96: { type: Boolean, default: true },
@@ -17,6 +17,7 @@ const props = defineProps({
   maxWidth: { type: [String, Number] },
   objectFit: { type: String },
   padding: { type: [String, Number] },
+  paddingRight: { type: [String, Number] },
   sizes: { type: String },
   src: { type: String },
   widthPercent: { type: [String, Number] },
@@ -40,6 +41,7 @@ const getCSSAImg = computed(() => {
     CSSMinHeight[`_${props.minHeight}`],
     CSSObjectFit[`${props.objectFit}`],
     CSSPadding[`_${props.padding}`],
+    CSSPadding[`right_${props.paddingRight}`],
     CSSWidth[`_${props.widthPercent}_percent`]
   ].filter($ => $)
 })
