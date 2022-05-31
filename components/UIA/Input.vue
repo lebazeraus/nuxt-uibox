@@ -52,7 +52,15 @@ const validates = {
     return value.length >= 5 &&
       value.indexOf('@') >= 0 &&
       value.indexOf('.') >= 3
-  }
+  },
+
+  mobile(value) {
+    return value.replace(/ /g, '').length === 10
+  },
+
+  names(value) {
+    return value.length > 2
+  },
 }
 
 function input(value) {

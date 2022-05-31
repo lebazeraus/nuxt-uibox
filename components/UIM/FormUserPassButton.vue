@@ -34,7 +34,7 @@ const disabledButton = computed(() => {
   <UISGrid gap="24">
     <UIMField v-bind="props.user" :model="fields.user"/>
     <UIMField v-bind="props.pass" :model="fields.pass"/>
-    <UIMLoading v-if="Status.Login === 'SENDING'"/>
+    <UIAMLoading v-if="Status.Login === 'SENDING'"/>
     <UIAButton
       v-else
       @click="$emit('signIn', fields)"
