@@ -1,20 +1,21 @@
 <script setup>
 // M
 import { ref } from "@vue/composition-api"
-import { CSSBorderRadius, CSSColor, CSSMaxWidth, CSSPadding } from "~/composables/useCSS"
+import { CSSArtifactMiselanea, CSSBorderRadius, CSSColor, CSSMaxWidth, CSSPadding } from "~/composables/useCSS"
 
 const props = defineProps({
   src: { type: String },
-  srcCover: { type: String }
+  srcCover: { type: String },
+  borderRadius: { type: Boolean, default: 8 }
 })
 
 const videoIsVisible = ref(false)
 </script>
 
 <template>
-  <div :class="CSSMaxWidth._1152">
-    <UIAImg v-if="!videoIsVisible" br-radius="8" :src="props.srcCover" width-percent="100"/>
-    <div v-if="props.src && !videoIsVisible" :class="$style.css_m_video_cover_yt"> -->
+  <div :class="[CSSArtifactMiselanea.position_relative, CSSMaxWidth._1152]">
+    <UIAImg v-if="!videoIsVisible" :br-radius="props.borderRadius" :src="props.srcCover" width-percent="100"/>
+    <div v-if="props.src && !videoIsVisible" :class="$style.css_m_video_cover_yt">
       <UIAIcon
         @click.native="videoIsVisible = true"
         bg="white"
@@ -26,7 +27,7 @@ const videoIsVisible = ref(false)
         size="64"
       />
     </div>
-    <UIAVideo v-else-if="props.src" :autoplay="props.autoplay" :src="props.src"/>
+    <UIAVideo v-else-if="props.src" :src="props.src"/>
   </div>
 </template>
 

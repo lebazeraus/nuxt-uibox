@@ -19,6 +19,8 @@ const props = defineProps({
   disabled: { type: Boolean },
   exactActive: { type: Boolean },
   icon: { type: Object },
+  iconRight: { type: Object },
+  isBlock: { type: Boolean },
   to: { type: String }
 })
 
@@ -38,23 +40,24 @@ const getCSSMTab = computed(() => {
   } else {
     return [
       props.center ? CSSArtifactMiselanea.center_with_margins : null,
+      CSSArtifactMiselanea[props.isBlock ? 'block' : 'inline_block'],
       CSSBorderRadius._8,
       CSSColor[`bg_${isActive.value ? props.bgActive : props.bg}`],
       CSSColor[`bg_hover_${isActive.value ? props.bgHoverActive : props.bgHover}`],
       CSSColor[`br_${props.brColor}`],
       CSSColor[`bs_hover_${props.bsHover}`],
-      CSSColor[`bs_focus_${props.bsFocus}`],
+      CSSColor[`bs_focus_${props.bsFocus}`]
     ].filter($ => $)
   }
 })
 </script>
 
 <template>
-<div @click="props.disabled || props.to ? () => {} : $emit('click')" :class="[$style.css_m_tab, getCSSMTab]" tab>
+<div @click="props.disabled || props.to ? () => {} : $emit('click')" :class="[$style.css_m_tab, getCSSMTab]">
   <component :is="!props.disabled && props.to ? 'nuxt-link' : 'div'" :to="props.to">
     <UISGrid
       align-items="center"
-      :columns="props.icon ? 'max_1fr' : null"
+      :columns="props.icon ? 'max_1fr' : props.iconRight ? '_1fr_max' : null"
       gap="8"
       padding-bottom="8"
       :padding-left="props.icon ? 8 : 16"
@@ -68,6 +71,11 @@ const getCSSMTab = computed(() => {
       <UIALabel
         :color="isActive ? props.colorActive : props.color"
         :color-hover="props.colorHover"><slot/></UIALabel>
+      <UIAIcon
+        v-if="props.iconRight"
+        :color="isActive ? props.iconRight.colorActive : props.iconRight.color"
+        :name="props.iconRight.name"
+        :size="props.iconRight.size"/>
     </UISGrid>
   </component>
 </div>
@@ -75,7 +83,8 @@ const getCSSMTab = computed(() => {
 
 <style module>
 .css_m_tab {
+  border-style: solid;
+  border-width: 1px;
   cursor: pointer;
-  display: inline-block;
 }
 </style>

@@ -1,44 +1,43 @@
 <script setup>
 // O
-import { computed, ref } from "@vue/composition-api"
-import { CSSBorderRadius, CSSColor, CSSPadding } from "~/composables/useCSS"
+import { computed } from "@vue/composition-api"
+import { CSSArtifactMiselanea, CSSBorderRadius, CSSColor, CSSGridTemplateColumns, CSSPadding } from "~/composables/useCSS"
 
 const props = defineProps({
   bg: { type: String, default: 'white' },
   brColor: { type: String, default: 'graylight' },
+  byColumns: { type: Boolean },
   floating: { type: Boolean },
   isHiden: { type: Boolean },
-  items: { type: Array }
+  items: { type: Array },
 })
 
 const emit = defineEmits()
 
-const filter = ref('')
-
-const getCSSOUl = computed(() => {
+const getCSSOUlBlocks = computed(() => {
   return [
+    CSSArtifactMiselanea.grid,
+    (props.byColumns && props.items.length > 1) ? CSSGridTemplateColumns.max_auto : null,
     CSSBorderRadius._4,
     CSSColor[`bg_${props.bg}`],
-    CSSColor[`br_${props.brColor}`]
+    CSSColor[`br_${props.brColor}`],
   ].filter($ => $)
 })
 
 function select($) {
   emit('select', $)
-  filter.value = ''
 }
 </script>
 
 <template>
-<ul :class="[$style.css_o_ul, { [$style['css_o_ul--floating']]: props.floating, [$style['css_o_ul--is-hiden']]: props.isHiden }, getCSSOUl]" tabindex="0">
-  <slot/>
-  <div v-if="props.items.length > 16" :class="CSSPadding._8">
-    <input v-model="filter" :class="$style.css_inputFilter" placeholder="Filter"/>
-  </div>
+<ul :class="[$style.css_o_ul, { [$style['css_o_ul--floating']]: props.floating, [$style['css_o_ul--is-hiden']]: props.isHiden }, getCSSOUlBlocks]" tabindex="0">
   <div v-for="($, i) in props.items" :key="i">
-    <UIALi @click="select($)" v-show="!filter || $.text.toLowerCase().indexOf(filter.toLowerCase()) >= 0" v-bind="$">
-      <br><small v-if="$.label">{{ $.label }}</small>
-    </UIALi>
+    <UIALabel v-if="$.text" line-clamp="1" margin-bottom="8" margin-left="16" margin-top="8">{{ $.text }}</UIALabel>
+    <div v-for="($$, ii) in $.items" @click="select($$)" :key="ii">
+      <UIALi v-bind="$$">
+        <br><small v-if="$$.label">{{ $$.label }}</small>
+      </UIALi>
+    </div>
   </div>
 </ul>
 </template>
@@ -60,7 +59,7 @@ function select($) {
   box-shadow: 0 4px 8px -2px rgba(var(--black), 8%);
   position: absolute;
   top: 100%;
-  width: 100%;
+  width: max-content;
   z-index: 4;
 } .css_o_ul--is-hiden {
   /* floating */
@@ -77,5 +76,11 @@ function select($) {
   outline: none;
   padding: 8px 16px;
   width: 100%;
+}
+
+@media screen and (max-width: 1152px) {
+  .css_o_ul {
+    grid-template-columns: 1fr !important;
+  }
 }
 </style>

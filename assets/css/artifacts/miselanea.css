@@ -1,7 +1,13 @@
 .center_with_margins {
-  display: block;
+  display: block !important;
   margin-left: auto;
   margin-right: auto;
+}
+
+.end_with_margins {
+  display: block !important;
+  margin-left: auto;
+  margin-right: 0;
 }
 
 .user_select_none {
@@ -39,6 +45,14 @@
   filter: brightness(.96);
 }
 
+.block {
+  display: block;
+}
+
+.inline_block {
+  display: inline-block;
+}
+
 .grid {
   display: grid;
   grid-auto-rows: auto;
@@ -71,4 +85,16 @@
 
 .text_uppercase {
   text-transform: uppercase;
+}
+
+.position_relative {
+  position: relative;
+}
+
+.position_fixed {
+  position: fixed;
+}
+
+.overflow_hidden {
+  overflow: hidden;
 }

@@ -1,14 +1,17 @@
 <script setup>
 import { computed } from "@vue/composition-api"
-import { CSSColor } from "~/composables/useCSS"
+import { CSSColor, CSSMargin } from "~/composables/useCSS"
 
 const props = defineProps({
-  color: { type: String, default: 'graylight' }
+  color: { type: String, default: 'graylight' },
+  margin: { type: [String, Number], default: 16 }
 })
 
 const getCSSAHr = computed(() => {
   return [
-    CSSColor[`br_${props.color}`]
+    CSSColor[`br_${props.color}`],
+    CSSMargin[`bottom_${props.margin}`],
+    CSSMargin[`top_${props.margin}`]
   ].filter($ => $)
 })
 </script>
@@ -23,7 +26,6 @@ const getCSSAHr = computed(() => {
   border-top-style: solid;
   border-top-width: 1px;
   height: 1px;
-  margin: 24px 0;
   opacity: .72;
 }
 </style>

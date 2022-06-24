@@ -44,7 +44,8 @@ const getCSSAInput = computed(() => {
 const masks = {
   email: { mask: 'C*@a*.a*', tokens: { 'C': { pattern: /[0-9.a-zA-Z]/, lowercase: true }}},
   mobile: '### #######',
-  names: 'Aa* Aa*'
+  names: 'Aa* Aa*',
+  date: '##/##/####'
 }
 
 const validates = {
@@ -61,9 +62,13 @@ const validates = {
   names(value) {
     return value.length > 2
   },
+
+  date(value) {
+    return value.length === 10
+  }
 }
 
-function input(value) {
+function _input(value) {
   emit('input', value)
   if (typeof props.validate === 'string') {
     emit('isValid', validates[props.validate](value))
@@ -84,7 +89,7 @@ export default {
 <template>
   <div>
     <input
-      @input="input($event.target.value)"
+      @input="_input($event.target.value)"
       v-maska="masks[props.mask] || props.mask"
       :class="[$style.css_a_input, getCSSAInput]"
       :disabled="props.disabled"

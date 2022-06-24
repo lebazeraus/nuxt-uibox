@@ -4,6 +4,7 @@ import { computed } from "@vue/composition-api"
 import { CSSArtifactDisabled, CSSArtifactMiselanea, CSSColor, CSSHeight, CSSMargin, CSSTextSize, CSSWidth } from "~/composables/useCSS"
 
 const props = defineProps({
+  align: { type: String },
   bg: { type: String, default: 'primary' },
   bgHover: { type: String },
   bgFocus: { type: String },
@@ -18,6 +19,7 @@ const props = defineProps({
   isLarge: { type: Boolean },
   isLoading: { type: Boolean },
   isSmall: { type: Boolean },
+  marginBottom: { type: [String, Number] },
   marginTop: { type: [String, Number] },
   text: { type: [String, Number] },
   widthPercent: { type: [String, Number] }
@@ -49,11 +51,13 @@ const getCSSAButton = computed(() => {
     ...style,
     CSSArtifactDisabled[(props.disabled || props.isLoading) ? 'button' : null],
     CSSArtifactMiselanea[props.isCenter ? 'center_with_margins' : null],
+    CSSArtifactMiselanea[`${props.align}_with_margins`],
     CSSArtifactMiselanea.user_select_none,
     CSSColor[`text_${props.color}`],
     // isSmall | isLarge | normal
     CSSTextSize[`_${props.isSmall ? 12 : props.isLarge ? 16 : 14}`],
     CSSHeight[`_${props.isSmall ? 32 : props.isLarge ? 48 : 40}`],
+    CSSMargin[`bottom_${props.marginBottom}`],
     CSSMargin[`top_${props.marginTop}`],
     CSSWidth[`_${props.widthPercent}_percent`]
   ].filter($ => $)

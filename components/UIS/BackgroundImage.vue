@@ -5,7 +5,7 @@ import { CSSMaxHeight, CSSMinHeight } from "~/composables/useCSS"
 
 const props = defineProps({
   image: { type: String },
-  curtainColor: { type: String },
+  curtainColor: { type: Boolean },
   maxHeight: { type: [String, Number] },
   minHeight: { type: [String, Number] },
   size: { type: String, default: 'auto' },

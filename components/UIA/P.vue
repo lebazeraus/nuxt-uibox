@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from "@vue/composition-api"
-import { CSSArtifactMiselanea, CSSColor, CSSTextAlign, CSSFontWeight, CSSMargin, CSSTextSize } from "~/composables/useCSS"
+import { CSSArtifactMiselanea, CSSColor, CSSTextAlign, CSSFontWeight, CSSMargin, CSSPadding, CSSTextSize } from "~/composables/useCSS"
 
 const props = defineProps({
   align: { type: String },
@@ -13,6 +13,7 @@ const props = defineProps({
   marginLeft: { type: [String, Number] },
   marginRight: { type: [String, Number] },
   marginTop: { type: [String, Number] },
+  padding: { type: [String, Number] },
   size: { type: [String, Number], default: 16 },
   text: { type: [String, Number] },
   userSelectNone: { type: Boolean }
@@ -31,6 +32,7 @@ const getCSSAP = computed(() => {
     CSSMargin[`left_${props.marginLeft}`],
     CSSMargin[`right_${props.marginRight}`],
     CSSMargin[`top_${props.marginTop}`],
+    CSSPadding[`_${props.padding}`],
     CSSTextAlign[props.align],
     CSSTextSize[`_${props.size}`]
   ].filter($ => $)
