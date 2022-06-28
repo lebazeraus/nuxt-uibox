@@ -13,7 +13,7 @@ const props = defineProps({
 <template>
   <div>
     <div :class="[CSSAlignItems.center, CSSArtifactMiselanea.grid, CSSGap._8, CSSGridTemplateColumns._1fr_max]">
-      <UIALabel v-if="props.label !== false" margin-bottom="4"/>
+      <UIALabel v-if="props.label !== false" margin-bottom="4">{{ props.label.text }}</UIALabel>
       <UIAIcon v-if="props.model.isValid" color="green" name="check-circle" size="12"/>
     </div>
     <div style="position: relative">
