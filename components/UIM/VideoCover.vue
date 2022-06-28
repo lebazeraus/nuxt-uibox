@@ -14,7 +14,7 @@ const videoIsVisible = ref(false)
 
 <template>
   <div :class="[CSSArtifactMiselanea.position_relative, CSSMaxWidth._1152]">
-    <UIAImg v-if="!videoIsVisible" :br-radius="props.borderRadius" :src="props.srcCover" width-percent="100"/>
+    <UIAImg v-if="!videoIsVisible && props.srcCover" :br-radius="props.borderRadius" :src="props.srcCover" width-percent="100"/>
     <div v-if="props.src && !videoIsVisible" :class="$style.css_m_video_cover_yt">
       <UIAIcon
         @click.native="videoIsVisible = true"

@@ -33,7 +33,7 @@ const getCSSSBackgroundImage = computed(() => {
   background-repeat: no-repeat;
   position: relative;
 } .css_s_background_image--curtain:before {
-  background-color: rgba(var(--secondary-color), 88%);
+  background-color: rgba(var(--nuxt-uibox-color-secondary), 88%);
   bottom: 0;
   content: '';
   left: 0;

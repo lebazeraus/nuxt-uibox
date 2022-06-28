@@ -4,7 +4,7 @@ import { CSSAlignItems, CSSArtifactMiselanea, CSSGap, CSSGridTemplateColumns } f
 
 const props = defineProps({
   icon: { type: Object },
-  label: { type: Object },
+  label: { type: [Object, Boolean] },
   input: { type: Object },
   model: { type: Object }
 })
@@ -13,7 +13,7 @@ const props = defineProps({
 <template>
   <div>
     <div :class="[CSSAlignItems.center, CSSArtifactMiselanea.grid, CSSGap._8, CSSGridTemplateColumns._1fr_max]">
-      <UIALabel v-bind="props.label" margin-bottom="4"/>
+      <UIALabel v-if="props.label !== false" margin-bottom="4"/>
       <UIAIcon v-if="props.model.isValid" color="green" name="check-circle" size="12"/>
     </div>
     <div style="position: relative">
