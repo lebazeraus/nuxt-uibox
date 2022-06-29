@@ -1,14 +1,16 @@
 <script setup>
 // O
 import { computed, ref } from "@vue/composition-api"
-import { CSSBorderRadius, CSSColor, CSSPadding } from "~/composables/useCSS"
+import { CSSBorderRadius, CSSColor, CSSMinWidth, CSSPadding } from "~/composables/useCSS"
 
 const props = defineProps({
   bg: { type: String, default: 'white' },
   brColor: { type: String, default: 'graylight' },
   floating: { type: Boolean },
   isHiden: { type: Boolean },
-  items: { type: Array }
+  items: { type: Array },
+  minWidth: { type: [String, Number] },
+  isRight: { type: Boolean }
 })
 
 const emit = defineEmits()
@@ -19,7 +21,8 @@ const getCSSOUl = computed(() => {
   return [
     CSSBorderRadius._4,
     CSSColor[`bg_${props.bg}`],
-    CSSColor[`br_${props.brColor}`]
+    CSSColor[`br_${props.brColor}`],
+    CSSMinWidth[`_${props.minWidth}`]
   ].filter($ => $)
 })
 
@@ -30,7 +33,7 @@ function select($) {
 </script>
 
 <template>
-<ul :class="[$style.css_o_ul, { [$style['css_o_ul--floating']]: props.floating, [$style['css_o_ul--is-hiden']]: props.isHiden }, getCSSOUl]" tabindex="0">
+<ul :class="[$style.css_o_ul, { [$style['css_o_ul--floating']]: props.floating, [$style['css_o_ul--is-right']]: props.isRight, [$style['css_o_ul--is-hiden']]: props.isHiden }, getCSSOUl]" tabindex="0">
   <slot/>
   <div v-if="props.items.length > 16" :class="CSSPadding._8">
     <input v-model="filter" :class="$style.css_inputFilter" placeholder="Filter"/>
@@ -68,10 +71,12 @@ function select($) {
   /* --- */
   opacity: 0;
   pointer-events: none;
+} .css_o_ul--is-right {
+  right: 0;
 }
 
 .css_inputFilter {
-  border: 1px solid lightgray;
+  border: 1px solid rgb(var(--nuxt-uibox-color-graylight));
   border-radius: 4px;
   font-size: 14px;
   outline: none;

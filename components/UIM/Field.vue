@@ -1,6 +1,6 @@
 <script setup>
 // M
-import { CSSAlignItems, CSSArtifactMiselanea, CSSGap, CSSGridTemplateColumns } from "~/composables/useCSS"
+import { CSSArtifactMiselanea } from "~/composables/useCSS"
 
 const props = defineProps({
   icon: { type: Object },
@@ -12,13 +12,11 @@ const props = defineProps({
 
 <template>
   <div>
-    <div :class="[CSSAlignItems.center, CSSArtifactMiselanea.grid, CSSGap._8, CSSGridTemplateColumns._1fr_max]">
-      <UIALabel v-if="props.label !== false" margin-bottom="4">{{ props.label.text }}</UIALabel>
-      <UIAIcon v-if="props.model.isValid" color="green" name="check-circle" size="12"/>
-    </div>
-    <div style="position: relative">
-      <UIAIcon v-if="props.icon" v-bind="props.icon" style="bottom: 12px; left: 12px; position: absolute;" size="18"/>
+    <UIALabel v-if="props.label !== false" v-bind="props.label" margin-bottom="4"/>
+    <div :class="[CSSArtifactMiselanea.position_relative]">
+      <UIAIcon v-if="props.icon" v-bind="props.icon" size="18" style="bottom: 12px; left: 12px; position: absolute;"/>
       <UIAInput @isValid="props.model.isValid = $event" v-bind="props.input" v-model="props.model.value" :padding-left="props.icon ? 40 : 16"/>
+      <UIAIcon v-if="props.model.isValid" color="green" name="check-circle" size="12" style="right: 4px; top: 4px; position: absolute;"/>
     </div>
   </div>
 </template>

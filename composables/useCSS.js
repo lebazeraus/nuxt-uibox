@@ -11,6 +11,7 @@ import justifyContent from "~/assets/css/justify-content.css?module"
 import margin from "~/assets/css/margin.css?module"
 import maxHeight from "~/assets/css/max-height.css?module"
 import maxWidth from "~/assets/css/max-width.css?module"
+import minWidth from "~/assets/css/min-width.css?module"
 import minHeight from "~/assets/css/min-height.css?module"
 import objectFit from "~/assets/css/object-fit.css?module"
 import padding from "~/assets/css/padding.css?module"
@@ -31,6 +32,7 @@ export const CSSJustifyContent = justifyContent
 export const CSSMargin = margin
 export const CSSMaxHeight = maxHeight
 export const CSSMaxWidth = maxWidth
+export const CSSMinWidth = minWidth
 export const CSSMinHeight = minHeight
 export const CSSObjectFit = objectFit
 export const CSSPadding = padding
