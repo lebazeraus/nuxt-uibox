@@ -35,7 +35,7 @@ function oneCoverUrl() {
         <UIAP color="white" size="12">{{ props.info.desc }}</UIAP>
       </div>
     </UIAImg>
-    <div :class="[CSSAlignItems.center, CSSArtifactMiselanea.grid, CSSGap._16, CSSGridTemplateColumns.max_1fr]">
+    <div :class="[CSSAlignItems.center, CSSArtifactMiselanea.grid, CSSGap._8, CSSGridTemplateColumns.max_1fr]">
       <UIAImg br-radius="50" height="32" :src="props.avatarUrl" width="32"/>
       <div>
         <UIAP line-clamp="1" size="14">{{ props.title }}</UIAP>

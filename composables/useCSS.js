@@ -14,6 +14,7 @@ import maxWidth from "~/assets/css/max-width.css?module"
 import minWidth from "~/assets/css/min-width.css?module"
 import minHeight from "~/assets/css/min-height.css?module"
 import objectFit from "~/assets/css/object-fit.css?module"
+import objectPosition from "~/assets/css/object-position.css?module"
 import padding from "~/assets/css/padding.css?module"
 import textAlign from "~/assets/css/text-align.css?module"
 import textSize from "~/assets/css/text-size.css?module"
@@ -35,6 +36,7 @@ export const CSSMaxWidth = maxWidth
 export const CSSMinWidth = minWidth
 export const CSSMinHeight = minHeight
 export const CSSObjectFit = objectFit
+export const CSSObjectPosition = objectPosition
 export const CSSPadding = padding
 export const CSSTextAlign = textAlign
 export const CSSTextSize = textSize

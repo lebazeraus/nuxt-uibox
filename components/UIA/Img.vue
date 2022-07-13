@@ -1,6 +1,6 @@
 <script setup>
 import { computed, ref } from "@vue/composition-api"
-import { CSSArtifactMiselanea, CSSBorderRadius, CSSColor, CSSMargin, CSSMaxHeight, CSSMaxWidth, CSSMinHeight, CSSObjectFit, CSSPadding, CSSWidth } from "~/composables/useCSS"
+import { CSSArtifactMiselanea, CSSBorderRadius, CSSColor, CSSMargin, CSSMaxHeight, CSSMaxWidth, CSSMinHeight, CSSObjectFit, CSSObjectPosition, CSSPadding, CSSWidth } from "~/composables/useCSS"
 
 const props = defineProps({
   align: { type: String },
@@ -16,6 +16,7 @@ const props = defineProps({
   minHeight: { type: [String, Number] },
   maxWidth: { type: [String, Number] },
   objectFit: { type: String },
+  objectPosition: { type: String },
   padding: { type: [String, Number] },
   paddingRight: { type: [String, Number] },
   sizes: { type: String },
@@ -40,6 +41,7 @@ const getCSSAImg = computed(() => {
     CSSMaxWidth[`_${props.maxWidth}`],
     CSSMinHeight[`_${props.minHeight}`],
     CSSObjectFit[`${props.objectFit}`],
+    CSSObjectPosition[`${props.objectPosition}`],
     CSSPadding[`_${props.padding}`],
     CSSPadding[`right_${props.paddingRight}`],
     CSSWidth[`_${props.widthPercent}_percent`]

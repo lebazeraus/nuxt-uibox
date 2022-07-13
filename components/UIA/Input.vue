@@ -45,6 +45,7 @@ const masks = {
   email: { mask: 'C*@a*.a*', tokens: { 'C': { pattern: /[0-9.a-zA-Z]/, lowercase: true }}},
   mobile: '### #######',
   names: 'Aa* Aa*',
+  fullName: 'Aa* Aa* Aa* Aa*',
   date: '##/##/####'
 }
 

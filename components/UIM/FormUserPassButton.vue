@@ -1,7 +1,7 @@
 <script setup>
-// M
 import { useStore } from '@nuxtjs/composition-api'
 import { computed, reactive } from '@vue/composition-api'
+import { CSSArtifactMiselanea, CSSGap, CSSPadding } from "~/composables/useCSS"
 
 const Store = useStore()
 
@@ -26,21 +26,20 @@ const disabledButton = computed(() => {
     props.user.input.validate(fields.user.value)
   ].indexOf(false) >= 0
 })
-
 </script>
 
 <template>
-<UISPadding>
-  <UISGrid gap="24">
+<form @submit.prevent="disabledButton ? () => {} : $emit('signIn', fields)" :class="[CSSPadding._24]">
+  <div :class="[CSSArtifactMiselanea.grid, CSSGap._24]">
     <UIMField v-bind="props.user" :model="fields.user"/>
     <UIMField v-bind="props.pass" :model="fields.pass"/>
     <UIMLoading v-if="Status.login === 'SENDING'"/>
     <UIAButton
       v-else
-      @click="$emit('signIn', fields)"
       :disabled="disabledButton"
+      type="submit"
       v-bind="props.button"
     />
-  </UISGrid>
-</UISPadding>
+  </div>
+</form>
 </template>
