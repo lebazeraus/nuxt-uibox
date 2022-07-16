@@ -1,11 +1,12 @@
 <script setup>
 import { useContext, useRoute } from "@nuxtjs/composition-api"
-import { CSSAlignItems, CSSColor, CSSBorderRadius, CSSGridTemplateColumns, CSSMaxWidth, CSSArtifactMiselanea, CSSGap, CSSPadding } from "~/composables/useCSS"
+import { CSSArtifactMiselanea, CSSGap, CSSJustifyContent } from "~/composables/useCSS"
 
 const props = defineProps({
+  align: { type: String },
   color: { type: String },
   doNotUse: { type: Array },
-  querys: { type: Object },
+  withQuery: { type: Boolean },
   urlRoot: { type: String },
 })
 
@@ -21,8 +22,25 @@ const _icons = [
   'envelope',
   'link-alt'
 ]
-
 const icons = []
+const argShare = {
+  query: {
+    facebook: '?o=2',
+    whatsapp: '?o=3',
+    twitter: '?o=7',
+    reddit: '?o=4',
+    telegram: '?o=5',
+    email: '%3Fo%3D6'
+  },
+  param: {
+    facebook: '/2',
+    whatsapp: '/3',
+    twitter: '/7',
+    reddit: '/4',
+    telegram: '/5',
+    email: '/6'
+  }
+}
 
 _icons.forEach(icon => {
   if (!props.doNotUse?.find($ => $ === icon)) {
@@ -44,22 +62,22 @@ function share({ name }) {
   }
   switch (name) {
     case 'facebook-f':
-      URL = `https://www.facebook.com/sharer/sharer.php?u=${URL}${props.querys?.facebook || ''}`
+      URL = `https://www.facebook.com/sharer/sharer.php?u=${URL}${argShare[props.withQuery ? 'query' : 'param'].facebook || ''}`
       break
     case 'whatsapp':
-      URL = `https://api.whatsapp.com/send?text=${documentTitle} | ${URL}${props.querys?.whatsapp || ''}`
+      URL = `https://api.whatsapp.com/send?text=${documentTitle} | ${URL}${argShare[props.withQuery ? 'query' : 'param'].whatsapp || ''}`
       break
     case 'twitter-alt':
-      URL = `https://twitter.com/intent/tweet?text=${documentTitle}&url=${URL}${props.querys?.twitter || ''}`
+      URL = `https://twitter.com/intent/tweet?text=${documentTitle}&url=${URL}${argShare[props.withQuery ? 'query' : 'param'].twitter || ''}`
       break
     case 'reddit-alien-alt':
-      URL = `https://www.reddit.com/submit?url=${URL}${props.querys?.reddit || ''}`
+      URL = `https://www.reddit.com/submit?url=${URL}${argShare[props.withQuery ? 'query' : 'param'].reddit || ''}`
       break
     case 'telegram-alt':
-      URL = `https://t.me/share/url?url=${URL}${props.querys?.telegram || ''}`
+      URL = `https://t.me/share/url?url=${URL}${argShare[props.withQuery ? 'query' : 'param'].telegram || ''}`
       break
     case 'envelope':
-      URL = `mailto:a?subject=${documentTitle}&body=${URL}${props.querys?.email || ''}`
+      URL = `mailto:a?subject=${documentTitle}&body=${URL}${argShare[props.withQuery ? 'query' : 'param'].email || ''}`
       break
   }
 
@@ -69,7 +87,7 @@ function share({ name }) {
 
 
 <template>
-<div :class="[CSSArtifactMiselanea.flex, CSSGap._8]">
+<div :class="[CSSArtifactMiselanea.flex, CSSGap._8, CSSJustifyContent[props.align]]">
   <UIAIcon
     @click="share($)"
     v-for="($, i) in icons"
