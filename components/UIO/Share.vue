@@ -8,6 +8,8 @@ const props = defineProps({
   doNotUse: { type: Array },
   withQuery: { type: Boolean },
   urlRoot: { type: String },
+  size: { type: [String, Number], default: 40 },
+  customParam: { type: String, default: '' }
 })
 
 const { $toast } = useContext()
@@ -62,22 +64,22 @@ function share({ name }) {
   }
   switch (name) {
     case 'facebook-f':
-      URL = `https://www.facebook.com/sharer/sharer.php?u=${URL}${argShare[props.withQuery ? 'query' : 'param'].facebook || ''}`
+      URL = `https://www.facebook.com/sharer/sharer.php?u=${URL}${argShare[props.withQuery ? 'query' : 'param'].facebook}${props.customParam}`
       break
     case 'whatsapp':
-      URL = `https://api.whatsapp.com/send?text=${documentTitle} | ${URL}${argShare[props.withQuery ? 'query' : 'param'].whatsapp || ''}`
+      URL = `https://api.whatsapp.com/send?text=${documentTitle} | ${URL}${argShare[props.withQuery ? 'query' : 'param'].whatsapp}${props.customParam}`
       break
     case 'twitter-alt':
-      URL = `https://twitter.com/intent/tweet?text=${documentTitle}&url=${URL}${argShare[props.withQuery ? 'query' : 'param'].twitter || ''}`
+      URL = `https://twitter.com/intent/tweet?text=${documentTitle}&url=${URL}${argShare[props.withQuery ? 'query' : 'param'].twitter}${props.customParam}`
       break
     case 'reddit-alien-alt':
-      URL = `https://www.reddit.com/submit?url=${URL}${argShare[props.withQuery ? 'query' : 'param'].reddit || ''}`
+      URL = `https://www.reddit.com/submit?url=${URL}${argShare[props.withQuery ? 'query' : 'param'].reddit}${props.customParam}`
       break
     case 'telegram-alt':
-      URL = `https://t.me/share/url?url=${URL}${argShare[props.withQuery ? 'query' : 'param'].telegram || ''}`
+      URL = `https://t.me/share/url?url=${URL}${argShare[props.withQuery ? 'query' : 'param'].telegram}${props.customParam}`
       break
     case 'envelope':
-      URL = `mailto:a?subject=${documentTitle}&body=${URL}${argShare[props.withQuery ? 'query' : 'param'].email || ''}`
+      URL = `mailto:a?subject=${documentTitle}&body=${URL}${argShare[props.withQuery ? 'query' : 'param'].email}`
       break
   }
 
@@ -97,7 +99,7 @@ function share({ name }) {
     :key="i"
     :name="$.name"
     padding="8"
-    size="40"
+    :size="props.size"
   />
 </div>
 </template>

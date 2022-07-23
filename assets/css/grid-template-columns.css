@@ -11,6 +11,7 @@
 .max_1fr { grid-template-columns: max-content 1fr; }
 .max_auto { grid-template-columns: max-content auto; }
 .max_1fr_max { grid-template-columns: max-content 1fr max-content; }
+._1fr_max_max { grid-template-columns: 1fr max-content max-content; }
 .min_1fr_min { grid-template-columns: min-content 1fr min-content; }
 ._1fr_max_1fr { grid-template-columns: 1fr max-content 1fr; }
 ._1fr_1fr { grid-template-columns: repeat(2, 1fr); }
