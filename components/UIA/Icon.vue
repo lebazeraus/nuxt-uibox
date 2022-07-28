@@ -20,11 +20,13 @@ const props = defineProps({
   marginTop: { type: [String, Number] },
   noty: { type: [String, Number] },
   padding: { type: [String, Number] },
-  size: { type: [String, Number], default: 24 }
+  size: { type: [String, Number], default: 24 },
+  superindex: { type: [String, Number] },
 })
 
 const getCSSABaseIcon = computed(() => {
   return [
+    CSSArtifactMiselanea[`${props.align}_with_margins`],
     CSSBorderRadius[`_${props.brRadius}`],
     CSSColor[`bg_${props.bg}`],
     CSSColor[`bg_hover_${props.bgHover}`],
@@ -35,7 +37,6 @@ const getCSSABaseIcon = computed(() => {
 const getCSSAIcon = computed(() => {
   return [
     CSSArtifactDisabled[props.disabled ? 'icon' : null],
-    CSSArtifactMiselanea[`${props.align}_with_margins`],
     CSSColor[`text_${props.color}`],
     CSSColor[`text_hover_${props.colorHover}`],
     CSSMargin[`_${props.margin}`],
@@ -50,7 +51,7 @@ const getCSSAIcon = computed(() => {
 </script>
 
 <template>
-<div @click="props.disabled ? () => {} : $emit('click')" :class="[$style.css_a_icon, getCSSABaseIcon]" :noty="props.noty || null">
+<div @click="props.disabled ? () => {} : $emit('click')" :class="[$style.css_a_icon, getCSSABaseIcon]" :noty="props.noty || null" :superindex="props.superindex || null">
   <Component :class="[getCSSAIcon]" :is="'Icons-uil-' + props.name" :size="String(props.size)"/>
 </div>
 </template>
@@ -60,18 +61,27 @@ const getCSSAIcon = computed(() => {
   display: inline-block;
   font-size: 0;
   position: relative;
+} .css_a_icon[noty]:after, .css_a_icon[superindex]:after {
+  font-size: 10px;
+  height: 16px;
+  line-height: 17px;
+  position: absolute;
+  text-align: center;
 } .css_a_icon[noty]:after {
   background-color: rgb(var(--red));
   border-radius: 50%;
   color: rgb(var(--white));
   content: attr(noty);
-  font-size: 10px;
-  height: 16px;
-  line-height: 17px;
-  position: absolute;
   right: 0px;
-  text-align: center;
   top: 4px;
   width: 16px;
+} .css_a_icon[superindex]:after {
+  background-color: rgb(var(--white));
+  border-radius: 2px;
+  color: rgb(var(--black));
+  content: attr(superindex);
+  left: 0;
+  right: 0;
+  top: -16px;
 }
 </style>

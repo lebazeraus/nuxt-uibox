@@ -1,10 +1,11 @@
 <script setup>
 import { computed } from "@vue/composition-api"
-import { CSSArtifactMiselanea, CSSColor, CSSTextAlign, CSSFontWeight, CSSMargin, CSSPadding, CSSTextSize } from "~/composables/useCSS"
+import { CSSArtifactMiselanea, CSSBorderRadius, CSSColor, CSSTextAlign, CSSFontWeight, CSSMargin, CSSPadding, CSSTextSize } from "~/composables/useCSS"
 
 const props = defineProps({
   align: { type: String },
   bg: { type: String },
+  brRadius: { type: String },
   color: { type: String, default: 'black' },
   fontWeight: { type: String },
   lineClamp: { type: [String, Number] },
@@ -28,6 +29,7 @@ const getCSSAP = computed(() => {
     CSSArtifactMiselanea[props.userSelectNone ? 'user_select_none' : null],
     CSSArtifactMiselanea[props.lineClamp ? 'line_clamp' : null],
     CSSArtifactMiselanea[`line_clamp_${props.lineClamp}`],
+    CSSBorderRadius[`_${props.brRadius}`],
     CSSColor[`bg_${props.bg}`],
     CSSColor[`text_${props.color}`],
     CSSFontWeight[`_${props.fontWeight}`],
