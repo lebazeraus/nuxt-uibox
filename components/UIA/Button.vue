@@ -1,6 +1,6 @@
 <script setup>
 // A
-import { computed } from "@vue/composition-api"
+import { computed } from "@nuxtjs/composition-api"
 import { CSSArtifactDisabled, CSSArtifactMiselanea, CSSColor, CSSHeight, CSSMargin, CSSTextSize, CSSWidth } from "~/composables/useCSS"
 
 const props = defineProps({

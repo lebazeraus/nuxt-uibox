@@ -1,6 +1,6 @@
 <script setup>
 import { useRoute } from "@nuxtjs/composition-api"
-import { computed } from "@vue/composition-api"
+import { computed } from "@nuxtjs/composition-api"
 import { CSSArtifactDisabled, CSSArtifactMiselanea, CSSBorderRadius, CSSColor } from "~/composables/useCSS"
 
 const props = defineProps({

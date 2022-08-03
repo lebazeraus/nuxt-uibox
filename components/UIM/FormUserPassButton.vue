@@ -1,6 +1,6 @@
 <script setup>
 import { useStore } from '@nuxtjs/composition-api'
-import { computed, reactive } from '@vue/composition-api'
+import { computed, reactive } from '@nuxtjs/composition-api'
 import { CSSArtifactMiselanea, CSSGap, CSSPadding } from "~/composables/useCSS"
 
 const Store = useStore()

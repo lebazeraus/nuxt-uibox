@@ -1,6 +1,6 @@
 <script setup>
 // M
-import { computed, ref, watch } from "@vue/composition-api"
+import { computed, ref, watch } from "@nuxtjs/composition-api"
 import { useFocusWithin } from '@vueuse/core'
 import { CSSArtifactDisabled, CSSBorderRadius, CSSColor } from "~/composables/useCSS"
 

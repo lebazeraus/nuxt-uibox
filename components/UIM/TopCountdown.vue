@@ -1,5 +1,5 @@
 <script setup>
-  import { onMounted, reactive } from "@vue/composition-api"
+  import { onMounted, reactive } from "@nuxtjs/composition-api"
   const counter = reactive({
     days: '00',
     hours: '00',

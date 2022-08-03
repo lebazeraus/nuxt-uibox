@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "@vue/composition-api"
+import { ref } from "@nuxtjs/composition-api"
 
 const isOpen = ref(false)
 </script>

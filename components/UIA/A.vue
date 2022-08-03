@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from "@vue/composition-api"
+import { computed } from "@nuxtjs/composition-api"
 import { CSSColor, CSSTextAlign } from "~/composables/useCSS"
 
 const props = defineProps({

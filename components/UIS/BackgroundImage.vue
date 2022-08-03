@@ -1,6 +1,6 @@
 <script setup>
 // S
-import { computed } from "@vue/composition-api"
+import { computed } from "@nuxtjs/composition-api"
 import { CSSMaxHeight, CSSMinHeight } from "~/composables/useCSS"
 
 const props = defineProps({

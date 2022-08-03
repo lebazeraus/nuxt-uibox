@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, ref } from "@vue/composition-api"
+import { computed, onMounted, ref } from "@nuxtjs/composition-api"
 import { CSSTextAlign, CSSColor, CSSMargin, CSSPadding } from "~/composables/useCSS"
 import { useElementBounding } from '@vueuse/core'
 

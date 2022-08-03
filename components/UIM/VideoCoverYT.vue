@@ -1,6 +1,6 @@
 <script setup>
 // M
-import { ref } from "@vue/composition-api"
+import { ref } from "@nuxtjs/composition-api"
 import { CSSBorderRadius, CSSColor, CSSMaxWidth, CSSPadding } from "~/composables/useCSS"
 
 const props = defineProps({
