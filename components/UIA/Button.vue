@@ -30,10 +30,13 @@ const getCSSAButton = computed(() => {
   if (props.category) {
     switch (props.category) {
       case 'black':
-        style = [CSSColor.bg_black, CSSColor.br_black, CSSColor.br_hover_black, CSSColor.bs_hover_black, CSSColor.bs_focus_black]
+        style = [CSSColor.bg_black, CSSColor.br_black, CSSColor.br_hover_black, CSSColor.bs_hover_black, CSSColor.bs_focus_black, CSSColor.text_white]
         break
       case 'gray':
-        style = [CSSColor.bg_graylight, CSSColor.br_graylight, CSSColor.bs_hover_black, CSSColor.bs_focus_black]
+        style = [CSSColor.bg_graylight, CSSColor.br_graylight, CSSColor.bs_hover_black, CSSColor.bs_focus_black, CSSColor.text_black]
+        break
+      case 'white':
+        style = [CSSColor.bg_white, CSSColor.br_graylight, CSSColor.br_hover_gray, CSSColor.bs_hover_gray, CSSColor.bs_focus_gray, CSSColor.text_black]
         break
     }
   } else {
@@ -44,7 +47,8 @@ const getCSSAButton = computed(() => {
       CSSColor[`br_${props.brColor}`],
       CSSColor[`br_hover_${props.brHover}`],
       CSSColor[`bs_hover_${props.bsHover}`],
-      CSSColor[`bs_focus_${props.bsFocus}`]
+      CSSColor[`bs_focus_${props.bsFocus}`],
+      CSSColor[`text_${props.color}`]
     ]
   }
   return [
@@ -53,7 +57,6 @@ const getCSSAButton = computed(() => {
     CSSArtifactMiselanea[props.isCenter ? 'center_with_margins' : null],
     CSSArtifactMiselanea[`${props.align}_with_margins`],
     CSSArtifactMiselanea.user_select_none,
-    CSSColor[`text_${props.color}`],
     // isSmall | isLarge | normal
     CSSTextSize[`_${props.isSmall ? 12 : props.isLarge ? 16 : 14}`],
     CSSHeight[`_${props.isSmall ? 32 : props.isLarge ? 48 : 40}`],
