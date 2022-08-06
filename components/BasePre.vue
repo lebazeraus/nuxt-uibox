@@ -10,8 +10,8 @@ const isOpen = ref(false)
     <UIALabel color="gray">Pre</UIALabel><slot/>
   </pre>
   <div :class="$style.css_icon_button">
-    <UIAIcon v-if="isOpen" @click="isOpen = false" bg="green" br-radius="50" color="white" name="times" padding="8" size="40"/>
-    <UIAIcon v-else @click="isOpen = true" bg="black" br-radius="50" color="white" name="brackets-curly" padding="8" size="40"/>
+    <UIAIcon v-if="isOpen" @click="isOpen = false" bg="green" br-radius="50" color="white" name="times"/>
+    <UIAIcon v-else @click="isOpen = true" bg="black" br-radius="50" color="white" name="brackets-curly"/>
   </div>
 </div>
 </template>

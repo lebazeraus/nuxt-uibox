@@ -1,3 +1,17 @@
+._32 { min-width: 32px; }
+._40 { min-width: 40px; }
+._48 { min-width: 48px; }
 ._64 { min-width: 64px; }
 ._96 { min-width: 96px; }
 ._144 { min-width: 144px; }
+._192 { min-width: 192px; }
+._240 { min-width: 240px; }
+._272 { min-width: 272px; }
+._320 { min-width: 320px; }
+._480 { min-width: 480px; }
+._512 { min-width: 512px; }
+._600 { min-width: 600px; }
+._648 { min-width: 648px; }
+._960 { min-width: 960px; }
+._1152 { min-width: 1152px; }
+._1440 { min-width: 1440px; }

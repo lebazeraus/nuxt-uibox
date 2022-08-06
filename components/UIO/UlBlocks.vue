@@ -1,7 +1,6 @@
 <script setup>
-// O
 import { computed } from "@nuxtjs/composition-api"
-import { CSSArtifactMiselanea, CSSBorderRadius, CSSColor, CSSGridTemplateColumns, CSSPadding } from "~/composables/useCSS"
+import { CSSArtifactMiselanea, CSSBorderRadius, CSSColor, CSSGridTemplateColumns } from "~/composables/useCSS"
 
 const props = defineProps({
   bg: { type: String, default: 'white' },

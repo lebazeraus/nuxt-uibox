@@ -1,7 +1,6 @@
 <script setup>
-import { useRoute } from "@nuxtjs/composition-api"
-import { computed } from "@nuxtjs/composition-api"
-import { CSSArtifactDisabled, CSSArtifactMiselanea, CSSBorderRadius, CSSColor } from "~/composables/useCSS"
+import { computed, useRoute } from "@nuxtjs/composition-api"
+import { CSSAlignItems, CSSArtifactDisabled, CSSArtifactMiselanea, CSSBorderRadius, CSSColor, CSSGap, CSSGridTemplateColumns, CSSPadding } from "~/composables/useCSS"
 
 const props = defineProps({
   active: { type: Boolean },
@@ -55,14 +54,7 @@ const getCSSMTab = computed(() => {
 <template>
 <div @click="props.disabled || props.to ? () => {} : $emit('click')" :class="[$style.css_m_tab, getCSSMTab]">
   <component :is="!props.disabled && props.to ? 'nuxt-link' : 'div'" :to="props.to">
-    <UISGrid
-      align-items="center"
-      :columns="props.icon ? 'max_1fr' : props.iconRight ? '_1fr_max' : null"
-      gap="8"
-      padding-bottom="8"
-      :padding-left="props.icon ? 8 : 16"
-      padding-right="16"
-      padding-top="8">
+    <div :class="[ CSSAlignItems.center, CSSArtifactMiselanea.grid, CSSGap._8, CSSGridTemplateColumns[props.icon ? 'max_1fr' : props.iconRight ? '_1fr_max' : null], CSSPadding[props.icon ? null : 'bottom_8'], CSSPadding[props.icon ? null : 'left_16'], CSSPadding.right_16, CSSPadding[props.icon ? null : 'top_8']]">
       <UIAIcon
         v-if="props.icon"
         :color="isActive ? props.icon.colorActive : props.icon.color"
@@ -76,7 +68,7 @@ const getCSSMTab = computed(() => {
         :color="isActive ? props.iconRight.colorActive : props.iconRight.color"
         :name="props.iconRight.name"
         :size="props.iconRight.size"/>
-    </UISGrid>
+    </div>
   </component>
 </div>
 </template>

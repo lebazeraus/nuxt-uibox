@@ -1,5 +1,4 @@
 <script setup>
-// S
 import { computed } from "@nuxtjs/composition-api"
 import { CSSMaxHeight, CSSMinHeight } from "~/composables/useCSS"
 

@@ -1,5 +1,4 @@
 <script setup>
-// A
 import { CSSBorderRadius } from "~/composables/useCSS"
 
 const props = defineProps({

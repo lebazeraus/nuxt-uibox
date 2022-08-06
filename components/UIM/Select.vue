@@ -55,8 +55,7 @@ const getCSSMSelect = computed(() => {
         br-radius="4"
         :class="$style.css_iconTimes"
         name="times"
-        padding="4"
-        size="24"
+        size="16"
       />
       <UIAIcon
         v-else
@@ -64,6 +63,7 @@ const getCSSMSelect = computed(() => {
         :color="props.input.color || 'black'"
         :class="$style.css_iconAngleDown"
         :name="props.showIconAdd ? 'plus' : 'angle-down'"
+        size="16"
       />
     </div>
     <UIOUl @select="select($event)" floating :is-hiden="!isFocus" :items="props.items"/>
@@ -76,9 +76,9 @@ const getCSSMSelect = computed(() => {
 }
 
 .css_iconAngleDown, .css_iconTimes {
-  bottom: 8px;
+  bottom: 4px;
   position: absolute;
-  right: 8px;
+  right: 4px;
 }
 
 .css_iconAngleDown {

@@ -1,5 +1,4 @@
 <script setup>
-// M
 import { ref } from "@nuxtjs/composition-api"
 import { CSSArtifactMiselanea, CSSBorderRadius, CSSColor, CSSMaxWidth, CSSPadding } from "~/composables/useCSS"
 

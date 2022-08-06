@@ -27,7 +27,7 @@ function slide() {
         </div>
         <div :class="CSSPadding._24">
           <UIALabel @click.native="slide()" align="center" color="white">Deslize</UIALabel>
-          <UIAIcon align="center" color="white" name="angle-down" size="48" style="cursor:pointer;"/>
+          <UIAIcon is-center color="white" name="angle-down" size="32" style="cursor:pointer;"/>
         </div>
       </div>
     </div>

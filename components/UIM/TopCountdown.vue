@@ -1,5 +1,6 @@
 <script setup>
   import { onMounted, reactive } from "@nuxtjs/composition-api"
+  import { CSSAlignItems, CSSArtifactMiselanea, CSSGap } from "~/composables/useCSS"
   const counter = reactive({
     days: '00',
     hours: '00',
@@ -31,12 +32,12 @@
 
 <template>
 <div :class="$style.css_m_top_countdown">
-  <UISFlex gap="4">
+  <div :class="[CSSArtifactMiselanea.flex, CSSGap._4]">
     <UIAP size="18" color="secondary">{{ counter.days }} <UIALabel size="10">Días</UIALabel></UIAP>
     <UIAP size="18" color="secondary">: {{ counter.hours }} <UIALabel size="10"> Horas</UIALabel></UIAP>
     <UIAP size="18" color="secondary">: {{ counter.minutes }} <UIALabel size="10">  Mins.</UIALabel></UIAP>
     <UIAP size="18" color="secondary">: {{ counter.seconds }} <UIALabel size="10">  Segs.</UIALabel></UIAP>
-  </UISFlex>
+  </div>
   <UIAP> Promoción del 20% desc</UIAP>
 </div>
 </template>

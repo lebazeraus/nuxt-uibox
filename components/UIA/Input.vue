@@ -1,5 +1,4 @@
 <script setup>
-// A 
 import { computed } from "@nuxtjs/composition-api"
 import { CSSArtifactDisabled, CSSColor, CSSMargin, CSSPadding } from "~/composables/useCSS"
 
@@ -11,6 +10,8 @@ const props = defineProps({
   bsFocus: { type: String, default: 'primary' },
   color: { type: String, default: 'black' },
   disabled: { type: Boolean },
+  isError: { type: Object, default: () => ({ value: false }) },
+  isValid: { type: Object, default: () => ({ value: false }) },
   marginTop: { type: [String, Number] },
   mask: { type: [String, Object, Array] },
   paddingBottom: { type: [String, Number], default: 0 },
@@ -20,7 +21,9 @@ const props = defineProps({
   placeholder: { type: String },
   readonly: { type: Boolean },
   type: { type: String, default: 'text' },
-  validate: { type: [Function, String], default: () => {} },
+  validate: { type: [Function, String], default: () => ()=>{} },
+  validateError: { type: Function, default: () => ()=>{} },
+  silentlyValidate: { type: Function, default: () => ()=>{} },
   value: { type: [String, Number] }
 })
 const emit = defineEmits()
@@ -72,10 +75,18 @@ const validates = {
 function _input(value) {
   emit('input', value)
   if (typeof props.validate === 'string') {
-    emit('isValid', validates[props.validate](value))
+    const isV = validates[props.validate](value)
+    emit('isValid', isV)
+    props.isValid.value = isV
   } else {
-    props.validate(value)
+    const isV = props.validate(value) === true
+    emit('isValid', isV)
+    props.isValid.value = isV || props.silentlyValidate(value) === true
   }
+
+  const isE = props.validateError(value) === true
+  emit('isError', isE)
+  props.isError.value = isE
 }
 </script>
 
@@ -88,18 +99,18 @@ export default {
 </script>
 
 <template>
-  <div>
-    <input
-      @input="_input($event.target.value)"
-      v-maska="masks[props.mask] || props.mask"
-      :class="[$style.css_a_input, getCSSAInput]"
-      :disabled="props.disabled"
-      :placeholder="props.placeholder"
-      :readonly="props.readonly"
-      :type="props.type"
-      :value="props.value"
-    />
-  </div>
+<div>
+  <input
+    @input="_input($event.target.value)"
+    v-maska="masks[props.mask] || props.mask"
+    :class="[$style.css_a_input, getCSSAInput]"
+    :disabled="props.disabled"
+    :placeholder="props.placeholder"
+    :readonly="props.readonly"
+    :type="props.type"
+    :value="props.value"
+  />
+</div>
 </template>
 
 <style module>

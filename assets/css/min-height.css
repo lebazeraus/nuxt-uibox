@@ -1,4 +1,7 @@
+._32 { min-height: 32px; }
+._40 { min-height: 40px; }
 ._48 { min-height: 48px; }
+._64 { min-height: 64px; }
 ._96 { min-height: 96px; }
 ._144 { min-height: 144px; }
 ._192 { min-height: 192px; }
@@ -8,5 +11,7 @@
 ._480 { min-height: 480px; }
 ._512 { min-height: 512px; }
 ._600 { min-height: 600px; }
+._648 { min-height: 648px; }
 ._960 { min-height: 960px; }
 ._1152 { min-height: 1152px; }
+._1440 { min-height: 1440px; }

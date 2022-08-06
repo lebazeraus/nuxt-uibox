@@ -1,5 +1,4 @@
 <script setup>
-// A 
 import { computed } from "@nuxtjs/composition-api"
 import { CSSArtifactDisabled, CSSColor, CSSMargin, CSSMinHeight, CSSPadding } from "~/composables/useCSS"
 
