@@ -7,6 +7,7 @@ const props = defineProps({
   coverUrl: { type: [String, Array] },
   desc: { type: String },
   info: { type: Object },
+  infoVisible: { type: Boolean },
   title: { type: String },
   to: { type: String }
 })
@@ -21,7 +22,7 @@ function oneCoverUrl() {
 </script>
 
 <template>
-<NuxtLink v-slot="{ navigate }" :class="$style.css_card" custom :to="props.to">
+<NuxtLink v-slot="{ navigate }" :class="[$style.css_card, props.to ? CSSArtifactMiselanea.cursor_pointer : null]" custom :to="props.to">
   <div @click="navigate" role="link">
     <UIAImg
       br-radius="8"
@@ -30,16 +31,17 @@ function oneCoverUrl() {
       margin-bottom="16"
       :src="oneCoverUrl()"
       width-percent="100">
-      <div :class="$style.css_info">
+      <div :class="[$style.css_info, { [$style['css_info--visible']] : props.infoVisible }]">
         <UIAP color="white" font-weight="600" line-clamp="1" size="14">{{ props.info.title }}</UIAP>
         <UIAP color="white" size="12">{{ props.info.desc }}</UIAP>
       </div>
     </UIAImg>
-    <div :class="[CSSAlignItems.center, CSSArtifactMiselanea.grid, CSSGap._8, CSSGridTemplateColumns.max_1fr]">
-      <UIAImg br-radius="50" height="32" :src="props.avatarUrl" width="32"/>
+    <div :class="[CSSAlignItems.center, CSSArtifactMiselanea.grid, CSSGap._8, CSSGridTemplateColumns[props.avatarUrl ? 'max_1fr' : null]]">
+      <UIAImg v-if="props.avatarUrl" br-radius="50" height="32" :src="props.avatarUrl" width="32"/>
       <div>
         <UIAP line-clamp="1" size="14">{{ props.title }}</UIAP>
         <UIAP v-if="props.desc" color="gray" size="12">{{ props.desc }}</UIAP>
+        <slot/>
       </div>
     </div>
   </div>
@@ -48,9 +50,7 @@ function oneCoverUrl() {
 
 
 <style module>
-.css_card {
-  cursor: pointer;
-} .css_card:hover .css_info {
+.css_card:hover .css_info {
   opacity: 1;
 }
 
@@ -68,5 +68,9 @@ function oneCoverUrl() {
   position: absolute;
   right: 0;
   transition: opacity .3s;
+}
+
+.css_info--visible {
+  opacity: 1;
 }
 </style>

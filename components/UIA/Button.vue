@@ -17,6 +17,7 @@ const props = defineProps({
   isCenter: { type: Boolean },
   isLarge: { type: Boolean },
   isLoading: { type: Boolean },
+  isRight: { type: Boolean },
   isSmall: { type: Boolean },
   marginBottom: { type: [String, Number] },
   marginTop: { type: [String, Number] },
@@ -54,7 +55,7 @@ const getCSSAButton = computed(() => {
     ...style,
     CSSArtifactDisabled[(props.disabled || props.isLoading) ? 'button' : null],
     CSSArtifactMiselanea[props.isCenter ? 'center_with_margins' : null],
-    CSSArtifactMiselanea[`${props.align}_with_margins`],
+    CSSArtifactMiselanea[props.isRight ? 'end_with_margins' : null],
     CSSArtifactMiselanea.user_select_none,
     // isSmall | isLarge | normal
     CSSTextSize[`_${props.isSmall ? 12 : props.isLarge ? 16 : 14}`],
