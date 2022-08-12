@@ -8,7 +8,7 @@ const props = defineProps({
   doNotUse: { type: Array },
   withQuery: { type: Boolean },
   urlRoot: { type: String },
-  size: { type: [String, Number], default: 40 },
+  size: { type: [String, Number], default: 24 },
   customParam: { type: String, default: '' }
 })
 

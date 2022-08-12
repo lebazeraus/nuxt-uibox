@@ -7,7 +7,7 @@ const props = defineProps({
 
 <template>
 <div :class="[CSSArtifactMiselanea.grid]">
-  <UIAImg align="center" :bg="null" :class="$style.css_animation" :filter-brightness96="false" :margin-top="props.marginTop" :src="require(`~/assets/images/loading.png`)"/>
+  <UIAImg align="center" :bg="null" :class="$style.css_animation" :filter-brightness96="false" :margin-top="props.marginTop" src="/images/loading.png"/>
   <UIALabel align="center"><slot/></UIALabel>
 </div>
 </template>
