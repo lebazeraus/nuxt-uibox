@@ -48,7 +48,7 @@ const getCSSAIcon = computed(() => {
 
 <template>
 <div @click="props.disabled ? () => {} : $emit('click')" :class="[$style.css_a_icon, getCSSABaseIcon]" :noty="props.noty || null" :superindex="props.superindex || null">
-  <i :class="[`uil uil-${props.name}`, getCSSAIcon]" :style="`font-size: ${props.size}px`"></i>
+  <li :class="[`con con-${props.name}`, getCSSAIcon]" :style="`font-size: ${props.size}px`"/>
 </div>
 </template>
 

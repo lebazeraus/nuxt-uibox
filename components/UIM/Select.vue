@@ -46,25 +46,25 @@ const getCSSMSelect = computed(() => {
       <div @click.stop tabindex="0" :class="[CSSBorderRadius._4, CSSColor.bs_focus_graylight]" :style="{cursor: props.input.disabled ? 'not-allowed' : 'pointer'}">
         <UIAInput v-bind="props.input" v-model="props.model.value.text" readonly/>
       </div>
-      <UIAIcon
-        v-if="props.allowToClean && props.model.value.text"
-        @click="select({})"
-        :bg="props.input.bg || 'white'"
-        :color="props.input.color || 'black'"
-        bg-hover="graylight"
-        br-radius="4"
-        :class="$style.css_iconTimes"
-        name="times"
-        size="16"
-      />
-      <UIAIcon
-        v-else
-        :bg="props.input.bg || 'white'"
-        :color="props.input.color || 'black'"
-        :class="$style.css_iconAngleDown"
-        :name="props.showIconAdd ? 'plus' : 'angle-down'"
-        size="16"
-      />
+      <div v-if="props.allowToClean && props.model.value.text" :class="$style.css_iconTimes">
+        <UIAIcon
+          @click="select({})"
+          :bg="props.input.bg || 'white'"
+          :color="props.input.color || 'black'"
+          bg-hover="graylight"
+          br-radius="4"
+          name="times"
+          size="16"
+        />
+      </div>
+      <div v-else :class="$style.css_iconAngleDown">
+        <UIAIcon
+          :bg="props.input.bg || 'white'"
+          :color="props.input.color || 'black'"
+          :name="props.showIconAdd ? 'plus' : 'angle-down'"
+          size="16"
+        />
+      </div>
     </div>
     <UIOUl @select="select($event)" floating :is-hiden="!isFocus" :items="props.items"/>
   </div>
