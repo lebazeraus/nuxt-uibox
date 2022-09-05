@@ -26,7 +26,7 @@ const props = defineProps({
 <div :class="[CSSArtifactMiselanea.grid, CSSGap._24, CSSGridTemplateColumns[`auto_fill_${props.autoFill}`]]" v-viewer="props">
   <div v-for="($, i) in props.items" :class="[CSSArtifactMiselanea.cursor_pointer]" :key="i">
     <img :alt="$[props.propsName[1]]" :class="[$style.css_img, CSSBorderRadius._8, CSSColor.bs_hover_secondary]" :data-source="$[props.propsName[0]]" :src="$[props.propsName[0]]">
-    <UIALabel margin-top="8">{{ $[props.propsName[1]] }}</UIALabel>
+    <UIALabel v-if="props.title" margin-top="8">{{ $[props.propsName[1]] }}</UIALabel>
   </div>
 </div>
 </template>

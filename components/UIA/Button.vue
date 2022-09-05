@@ -3,7 +3,6 @@ import { computed } from "@nuxtjs/composition-api"
 import { CSSArtifactDisabled, CSSArtifactMiselanea, CSSColor, CSSHeight, CSSMargin, CSSTextSize, CSSWidth } from "~/composables/useCSS"
 
 const props = defineProps({
-  align: { type: String },
   bg: { type: String, default: 'primary' },
   bgHover: { type: String },
   bgFocus: { type: String },
