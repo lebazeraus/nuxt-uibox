@@ -41,7 +41,7 @@ const getCSSMSelect = computed(() => {
 
 <template>
   <div :class="[$style.css_select, getCSSMSelect]" ref="target">
-    <UIALabel v-if="props.label" v-bind="props.label" margin-bottom="4"/>
+    <UIALabel v-if="props.label" v-bind="props.label" is-bold margin-bottom="4"/>
     <div :class="$style.css_field">
       <div @click.stop tabindex="0" :class="[CSSBorderRadius._4, CSSColor.bs_focus_graylight]" :style="{cursor: props.input.disabled ? 'not-allowed' : 'pointer'}">
         <UIAInput v-bind="props.input" v-model="props.model.value.text" readonly/>

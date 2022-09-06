@@ -1,7 +1,6 @@
 <script setup>
 import { ref, useRouter, watch } from "@nuxtjs/composition-api"
 import { useFocusWithin } from '@vueuse/core'
-import { CSSArtifactDisabled, CSSBorderRadius, CSSColor } from "~/composables/useCSS"
 
 const props = defineProps({
   bg: { type: String, default: 'white' },

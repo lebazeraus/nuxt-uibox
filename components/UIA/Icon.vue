@@ -18,7 +18,7 @@ const props = defineProps({
   marginRight: { type: [String, Number] },
   marginTop: { type: [String, Number] },
   noty: { type: [String, Number] },
-  size: { type: [String, Number], default: 24 },
+  size: { type: [String, Number], default: 20 },
   superindex: { type: [String, Number] }
 })
 

@@ -7,7 +7,7 @@ const props = defineProps({
   bg: { type: String },
   color: { type: String, default: 'black' },
   colorHover: { type: String },
-  fontWeight: { type: String, default: '600' },
+  isBold: { type: Boolean },
   isCapital: { type: Boolean },
   isUpper: { type: Boolean },
   lineClamp: { type: [String, Number] },
@@ -22,14 +22,14 @@ const props = defineProps({
 
 const getCSSALabel = computed(() => {
   return [
-    CSSArtifactMiselanea[props.lineClamp ? 'line_clamp' : null],
+    props.lineClamp ? CSSArtifactMiselanea.line_clamp : null,
     CSSArtifactMiselanea[`line_clamp_${props.lineClamp}`],
-    CSSArtifactMiselanea[props.isCapital ? 'text_capitalize' : null],
-    CSSArtifactMiselanea[props.isUpper ? 'text_uppercase' : null],
+    props.isCapital ? CSSArtifactMiselanea.text_capitalize : null,
+    props.isUpper ? CSSArtifactMiselanea.text_uppercase : null,
     CSSColor[`bg_${props.bg}`],
     CSSColor[`text_${props.color}`],
     CSSColor[`text_hover_${props.colorHover}`],
-    CSSFontWeight[`_${props.fontWeight}`],
+    props.isBold ? CSSFontWeight._600 : null,
     CSSMargin[`_${props.margin}`],
     CSSMargin[`bottom_${props.marginBottom}`],
     CSSMargin[`left_${props.marginLeft}`],

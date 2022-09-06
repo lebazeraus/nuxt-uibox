@@ -15,7 +15,7 @@ const isError = ref(false)
 
 <template>
   <div>
-    <UIALabel v-if="props.label !== false" v-bind="props.label" margin-bottom="4"/>
+    <UIALabel v-if="props.label !== false" v-bind="props.label" is-bold margin-bottom="4"/>
     <div :class="[CSSArtifactMiselanea.position_relative]">
       <UIAIcon v-if="props.icon" v-bind="props.icon" size="18" style="bottom: 3px; left: 4px; position: absolute;"/>
       <UIAInput @isValid="isValid = $event" @isError="isError = $event" v-bind="props.input" v-model="props.model.value" :padding-left="props.icon ? 40 : 16"/>
