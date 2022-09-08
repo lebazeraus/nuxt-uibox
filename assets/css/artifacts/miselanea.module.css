@@ -104,10 +104,14 @@
   border-style: solid;
 }
 
-.border_1 {
+.border_1_dashed, .border_2_dashed {
+  border-style: dashed;
+}
+
+.border_1, .border_1_dashed {
   border-width: 1px;
 }
 
-.border_2 {
+.border_2, .border_2_dashed {
   border-width: 2px;
 }
