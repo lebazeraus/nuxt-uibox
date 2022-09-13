@@ -62,7 +62,8 @@ const getCSSMTab = computed(() => {
         :size="props.icon.size"/>
       <UIALabel
         :color="isActive ? props.colorActive : props.color"
-        :color-hover="props.colorHover"><slot/></UIALabel>
+        :color-hover="props.colorHover"
+        is-bold><slot/></UIALabel>
       <UIAIcon
         v-if="props.iconRight"
         :color="isActive ? props.iconRight.colorActive : props.iconRight.color"
